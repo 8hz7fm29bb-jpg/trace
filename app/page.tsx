@@ -9,7 +9,7 @@ const empty={product_name:'',supplier:'',producer_lot:'',internal_lot:'',expiry_
 export default function Home(){
  const [view,setView]=useState<'home'|'new'|'archive'|'detail'>('home')
  const [selected,setSelected]=useState<Arrival|null>(null)
- const [detailPhotos,setDetailPhotos]=useState<{photo_path:string;photo_type:string;url?:string}[]>([])
+ const [detailPhotos,setDetailPhotos]=useState<{photo_path:string;photo_type:string;url:string}[]>([])
  const [form,setForm]=useState(empty)
  const [rows,setRows]=useState<Arrival[]>([])
  const [q,setQ]=useState('')
@@ -19,7 +19,7 @@ export default function Home(){
  const loadSuppliers=async()=>{if(!supabase)return;const {data}=await supabase.from('trace_suppliers').select('name').order('name');setSuppliers((data||[]).map((x:any)=>x.name))}
  useEffect(()=>{load();loadSuppliers()},[])
  const filtered=useMemo(()=>rows.filter(r=>[r.product_name||'',r.supplier||'',r.producer_lot||'',r.internal_lot||''].join(' ').toLowerCase().includes(q.toLowerCase())),[rows,q])
- const openArrival=async(r:Arrival)=>{setSelected(r);setView('detail');if(!supabase)return;const {data}=await supabase.from('trace_arrival_photos').select('photo_path,photo_type').eq('arrival_id',r.id).order('created_at');const items=await Promise.all((data||[]).map(async(p:any)=>{const {data:u}=await supabase.storage.from('trace-arrivals').createSignedUrl(p.photo_path,3600);return {...p,url:u?.signedUrl}}));setDetailPhotos(items)}
+ const openArrival=async(r:Arrival)=>{setSelected(r);setView('detail');if(!supabase)return;const {data}=await supabase.from('trace_arrival_photos').select('photo_path,photo_type').eq('arrival_id',r.id).order('created_at');const items=await Promise.all((data||[]).map(async(p:any)=>{const {data:u}=await supabase.storage.from('trace-arrivals').createSignedUrl(p.photo_path,3600);return {...p,url:u?.signedUrl || ''}}));setDetailPhotos(items)}
  const [photo,setPhoto]=useState<File|null>(null)
  const [productPhotos,setProductPhotos]=useState<File[]>([])
  const save=async(e:React.FormEvent)=>{e.preventDefault();setMessage('');if(!form.supplier.trim()){setMessage('Inserisci il fornitore.');return}if(!photo){setMessage('La foto del documento di consegna è obbligatoria.');return}if(!supabase){setMessage('Database non configurato.');return}
