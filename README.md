@@ -10,3 +10,5 @@ Web app Officina22 per la tracciabilità dei lotti in ingresso e dei lotti di pr
 - Archivio arrivi e produzioni
 
 Progetto separato da Orders NG.
+
+Deployment Vercel inizializzato.
