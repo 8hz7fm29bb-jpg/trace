@@ -1,6 +1,6 @@
 'use client'
 import {useEffect,useMemo,useState} from 'react'
-import {Archive,Camera,ChevronLeft,ExternalLink,Factory,PackagePlus,Printer,Search,Trash2,X} from 'lucide-react'
+import {Archive,Camera,ChevronLeft,ExternalLink,Factory,PackagePlus,Printer,Search,Trash2,RefreshCw,X} from 'lucide-react'
 import {supabase} from '@/lib/supabase'
 
 type Arrival={id:string;created_at:string;product_name:string|null;supplier:string|null;producer_lot:string|null;internal_lot:string|null;expiry_date:string|null;category:string|null;delivery_date?:string;photo_path?:string|null}
