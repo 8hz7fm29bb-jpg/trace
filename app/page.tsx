@@ -19,7 +19,7 @@ export default function Home(){
  const loadSuppliers=async()=>{if(!supabase)return;const {data}=await supabase.from('trace_suppliers').select('name').order('name');setSuppliers((data||[]).map((x:any)=>x.name))}
  useEffect(()=>{load();loadSuppliers()},[])
  const filtered=useMemo(()=>rows.filter(r=>[r.product_name||'',r.supplier||'',r.producer_lot||'',r.internal_lot||''].join(' ').toLowerCase().includes(q.toLowerCase())),[rows,q])
- const openArrival=async(r:Arrival)=>{setSelected(r);setView('detail');if(!supabase)return;const {data}=await supabase.from('trace_arrival_photos').select('photo_path,photo_type').eq('arrival_id',r.id).order('created_at');const items=await Promise.all((data||[]).map(async(p:any)=>{const {data:u}=await supabase.storage.from('trace-arrivals').createSignedUrl(p.photo_path,3600);return {...p,url:u?.signedUrl || ''}}));setDetailPhotos(items)}
+ const openArrival=async(r:Arrival)=>{setSelected(r);setView('detail');const db=supabase;if(!db)return;const {data}=await db.from('trace_arrival_photos').select('photo_path,photo_type').eq('arrival_id',r.id).order('created_at');const items=await Promise.all((data||[]).map(async(p:any)=>{const {data:u}=await db.storage.from('trace-arrivals').createSignedUrl(p.photo_path,3600);return {...p,url:u?.signedUrl || ''}}));setDetailPhotos(items)}
  const [photo,setPhoto]=useState<File|null>(null)
  const [productPhotos,setProductPhotos]=useState<File[]>([])
  const save=async(e:React.FormEvent)=>{e.preventDefault();setMessage('');if(!form.supplier.trim()){setMessage('Inserisci il fornitore.');return}if(!photo){setMessage('La foto del documento di consegna è obbligatoria.');return}if(!supabase){setMessage('Database non configurato.');return}
