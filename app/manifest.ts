@@ -1,0 +1,2 @@
+import type { MetadataRoute } from 'next'
+export default function manifest():MetadataRoute.Manifest{return{name:'TRACE',short_name:'TRACE',description:'Tracciabilità e lotti Officina22',start_url:'/',display:'standalone',background_color:'#f3f2ef',theme_color:'#171717'}}
