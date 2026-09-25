@@ -12,10 +12,10 @@
 
 .labelPreview{margin-top:8px;border:2px solid #171717;border-radius:14px;padding:22px;max-width:420px;background:#fff}.labelPreview>p{font-size:10px;letter-spacing:1.3px;font-weight:800;margin:0 0 12px}.labelPreview h3{font-size:26px;margin:0 0 18px}.labelPreview>div{display:flex;justify-content:space-between;border-top:1px solid #ddd;padding:10px 0}.labelPreview span{font-size:10px;letter-spacing:1px;color:#777}.printLabel{width:100%;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;background:#171717;color:#fff;border:0;border-radius:10px;padding:14px;font-weight:800;cursor:pointer}@media print{
  @page{size:60mm 45mm;margin:0}
- html,body{margin:0!important;padding:0!important;background:#fff!important}
+ html,body{width:60mm!important;height:45mm!important;min-height:0!important;max-height:45mm!important;overflow:hidden!important;margin:0!important;padding:0!important;background:#fff!important}
  main>header,main>.back,main>.panel>.eyebrow,main>.panel>h2,main>.panel>.muted,.productionForm>label,.productionForm>.autoInfo,.productionForm>.sectionTitle,.productionForm>.conservationChoices,.productionForm>.expiryResult,.productionForm>.productionLots,.productionForm>.primary,.productionForm>.message{display:none!important}
- main{min-height:0!important;max-width:none!important;margin:0!important;padding:0!important}
- .panel,.panel.wide,.productionForm{display:block!important;border:0!important;margin:0!important;padding:0!important;max-width:none!important;background:#fff!important}
+ main{width:60mm!important;height:45mm!important;min-height:0!important;max-height:45mm!important;overflow:hidden!important;margin:0!important;padding:0!important}
+ .panel,.panel.wide,.productionForm{display:block!important;width:60mm!important;height:45mm!important;min-height:0!important;max-height:45mm!important;overflow:hidden!important;border:0!important;margin:0!important;padding:0!important;max-width:60mm!important;background:#fff!important}
  .labelPreview{display:block!important;position:absolute!important;left:1mm!important;top:1mm!important;transform:none!important;width:58mm!important;max-width:58mm!important;min-width:58mm!important;margin:0!important;padding:3mm!important;border:0.4mm solid #000!important;border-radius:0!important;background:#fff!important;color:#000!important;box-sizing:border-box!important;font-weight:400!important}
  .labelPreview>p{display:block!important;margin:0 0 2mm!important;font-size:7pt!important;letter-spacing:.5pt!important;font-weight:400!important;color:#000!important}
  .labelPreview h3{display:block!important;font-size:13pt!important;line-height:1.1!important;margin:0 0 2mm!important;font-weight:400!important;color:#000!important}
