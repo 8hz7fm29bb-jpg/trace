@@ -1,5 +1,5 @@
 'use client'
-import {useEffect,useMemo,useState} from 'react'
+import {useEffect,useMemo,useRef,useState} from 'react'
 import {Archive,Camera,ChevronLeft,Factory,PackagePlus,Printer,Search,Trash2,RefreshCw,X} from 'lucide-react'
 import {supabase} from '@/lib/supabase'
 
@@ -9,6 +9,7 @@ type Production={id:string;production_lot:string;name:string;production_date:str
 const empty={product_name:'',supplier:'',producer_lot:'',internal_lot:'',expiry_date:'',category:''}
 
 export default function Home(){
+ const printPending=useRef(false)
  const [view,setView]=useState<'home'|'new'|'archive'|'detail'|'label'|'productions'|'productionDetail'>('home')
  const [selected,setSelected]=useState<Arrival|null>(null)
  const [detailPhotos,setDetailPhotos]=useState<{photo_path:string;photo_type:string;url:string}[]>([])
@@ -30,7 +31,8 @@ export default function Home(){
  const [editProductionDate,setEditProductionDate]=useState('')
  const [editProductionConservation,setEditProductionConservation]=useState<Conservation|null>(null)
  const [editProductionLots,setEditProductionLots]=useState<string[]>([])
- const printProduction=(p:{lot:string;date:string;expiry:string|null;name:string;conservation:Conservation})=>{setGeneratedProduction(p);setView('label');setTimeout(()=>window.print(),700)}
+ const printProduction=(p:{lot:string;date:string;expiry:string|null;name:string;conservation:Conservation})=>{setGeneratedProduction(p);printPending.current=true;setView('label')}
+ useEffect(()=>{if(view!=='label'||!generatedProduction||!printPending.current)return;printPending.current=false;const id=window.setTimeout(()=>{window.scrollTo(0,0);window.print()},900);return()=>window.clearTimeout(id)},[view,generatedProduction])
  const expiryFor=(date:string,mode:Conservation)=>{const d=new Date(date+'T12:00:00');if(mode==='AMBIENTE')d.setDate(d.getDate()+120);else if(mode==='FRESCO')d.setDate(d.getDate()+7);else d.setMonth(d.getMonth()+3);return d.toISOString().slice(0,10)}
  const loadProductions=async()=>{if(!supabase)return;const {data}=await supabase.from('trace_productions').select('*').order('created_at',{ascending:false});setProductions((data||[]) as Production[])}
  const generateProduction=async()=>{if(!supabase||!productionName.trim()||!productionLots.length)return;if(!productionConservation){setProductionMessage('Seleziona la modalità di conservazione.');return}setProductionMessage('Generazione in corso…');const today=new Date().toISOString().slice(0,10);const expiry=expiryFor(today,productionConservation);const {data,error}=await supabase.from('trace_productions').insert({production_lot:'',name:productionName.trim(),production_date:today,expiry_date:expiry,conservation:productionConservation}).select('id,production_lot,production_date,expiry_date').single();if(error){setProductionMessage('Errore: '+error.message);return}const links=productionLots.map(id=>({production_id:data.id,arrival_id:id}));const {error:linkError}=await supabase.from('trace_production_arrivals').insert(links);if(linkError){setProductionMessage('Produzione creata, errore collegamento lotti: '+linkError.message);return}const printData={lot:data.production_lot,date:data.production_date,expiry:data.expiry_date,name:productionName.trim(),conservation:productionConservation};setProductionMessage('Produzione archiviata. Stampa in apertura…');setProductionName('');setProductionConservation(null);setProductionLots([]);printProduction(printData)}
