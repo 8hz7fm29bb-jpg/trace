@@ -43,3 +43,11 @@
 /* Easier visual identification of individual production records */
 .productionRow{border:1px solid #d7d5cf!important;border-radius:14px!important;padding:18px!important;margin:0 0 12px!important;background:#fff!important}
 .productionRow:hover{border-color:#171717!important;background:#fafafa!important}
+
+
+/* Supplier autocomplete: consistent on iPhone, iPad and desktop Safari */
+.supplierField{position:relative}
+.supplierSuggestions{position:absolute;left:0;right:0;top:100%;z-index:50;margin-top:4px;background:#fff;border:1px solid #d8d8d8;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);max-height:260px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.supplierSuggestions button{display:block;width:100%;padding:12px 14px;border:0;border-bottom:1px solid #eee;background:#fff;color:#111;text-align:left;font:inherit;cursor:pointer}
+.supplierSuggestions button:last-child{border-bottom:0}
+.supplierSuggestions button:active{background:#f3f3f3}
