@@ -43,3 +43,6 @@
 /* Easier visual identification of individual production records */
 .productionRow{border:1px solid #d7d5cf!important;border-radius:14px!important;padding:18px!important;margin:0 0 12px!important;background:#fff!important}
 .productionRow:hover{border-color:#171717!important;background:#fafafa!important}
+
+/* Align page header and dashboard back control with the registration panel width */
+main>header,main>.back{max-width:760px;margin-left:auto;margin-right:auto;width:100%}
