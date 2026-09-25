@@ -30,3 +30,8 @@
 .usedLotLink{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #ddd;border-radius:10px;padding:14px;background:#fff;text-align:left;cursor:pointer}.usedLotLink:hover{border-color:#171717;background:#fafafa}.usedLotLink>span{display:flex;flex-direction:column;gap:4px}.usedLotLink small{color:#777;font-size:14px;font-weight:400}
 
 .productionActions{display:flex;gap:10px;flex-wrap:wrap}.productionActions .editButton{display:flex;align-items:center;gap:7px}
+
+@media print and (max-width:650px){
+ html,body,main,.panel,.panel.wide,.productionForm{width:60mm!important;height:45mm!important;min-height:45mm!important;max-height:45mm!important;overflow:hidden!important}
+ .labelPreview{position:fixed!important;left:3mm!important;top:3mm!important;width:54mm!important;max-width:54mm!important;min-width:54mm!important;margin:0!important;transform:none!important;visibility:visible!important}
+}
