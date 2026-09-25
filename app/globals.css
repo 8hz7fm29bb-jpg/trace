@@ -51,3 +51,8 @@
 .supplierSuggestions button{display:block;width:100%;padding:12px 14px;border:0;border-bottom:1px solid #eee;background:#fff;color:#111;text-align:left;font:inherit;cursor:pointer}
 .supplierSuggestions button:last-child{border-bottom:0}
 .supplierSuggestions button:active{background:#f3f3f3}
+
+
+/* Easier visual identification of individual arrival records */
+.archiveHead + .list .arrivalLink:not(.productionRow){border:1px solid #d7d5cf!important;border-radius:14px!important;padding:18px!important;margin:0 0 12px!important;background:#fff!important}
+.archiveHead + .list .arrivalLink:not(.productionRow):hover{border-color:#171717!important;background:#fafafa!important}
