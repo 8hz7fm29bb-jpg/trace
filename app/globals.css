@@ -39,3 +39,7 @@
 .printOnlyPage{width:60mm!important;height:45mm!important;min-height:45mm!important;max-height:45mm!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#fff!important}
 .printOnlyPage .labelPreview{display:block!important;position:absolute!important;left:3mm!important;top:3mm!important;width:54mm!important;max-width:54mm!important;min-width:54mm!important;margin:0!important;padding:2.5mm!important;border:1.5px solid #000!important;box-sizing:border-box!important;background:#fff!important;color:#000!important}
 @media print{.printOnlyPage{display:block!important;position:absolute!important;left:0!important;top:0!important;width:60mm!important;height:45mm!important;overflow:hidden!important}.printOnlyPage .labelPreview{display:block!important;visibility:visible!important}}
+
+/* Easier visual identification of individual production records */
+.productionRow{border:1px solid #d7d5cf!important;border-radius:14px!important;padding:18px!important;margin:0 0 12px!important;background:#fff!important}
+.productionRow:hover{border-color:#171717!important;background:#fafafa!important}
