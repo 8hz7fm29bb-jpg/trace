@@ -1,2 +1,2 @@
 import type { MetadataRoute } from 'next'
-export default function manifest():MetadataRoute.Manifest{return{name:'TRACE',short_name:'TRACE',description:'Tracciabilità e lotti Officina22',start_url:'/',display:'standalone',background_color:'#f3f2ef',theme_color:'#171717'}}
+export default function manifest():MetadataRoute.Manifest{return{name:'TRACE HACCP',short_name:'TRACE',description:'Tracciabilità e lotti Officina22',start_url:'/',display:'standalone',background_color:'#F2B632',theme_color:'#F2B632',icons:[{src:'/icon',sizes:'512x512',type:'image/png',purpose:'any'},{src:'/icon',sizes:'512x512',type:'image/png',purpose:'maskable'}]}}
