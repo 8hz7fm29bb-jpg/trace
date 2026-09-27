@@ -66,3 +66,36 @@
 .productionSuggestions button:active{background:#f3f3f3}
 
 .conformeBox{grid-column:1/-1;width:100%;display:grid!important;grid-template-columns:28px 1fr;align-items:center;gap:12px!important;border:1px solid #cbc9c3;border-radius:10px;padding:13px 14px;background:#fafafa;cursor:pointer}.conformeBox input{position:absolute;opacity:0;pointer-events:none}.conformeCheck{width:26px;height:26px;border:2px solid #171717;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;line-height:1}.conformeBox.checked .conformeCheck{background:#171717;color:#fff}.conformeText{display:flex;flex-direction:column;gap:2px}.conformeText b{font-size:14px;letter-spacing:.8px}.conformeText small{font-size:10px;letter-spacing:.7px;font-weight:700;color:#686660}.detailMeta{grid-template-columns:repeat(3,1fr)}@media(max-width:650px){.detailMeta{grid-template-columns:1fr 1fr}.detailMeta>div:last-child{grid-column:1/-1}}
+
+
+/* TRACE account access */
+.authPage{min-height:100vh;display:grid;place-items:center;padding:24px}
+.authCard{width:min(460px,100%);background:#fff;border:1px solid #dedede;border-radius:22px;padding:30px;box-shadow:0 16px 48px rgba(0,0,0,.08)}
+.authBrand{margin-bottom:20px}
+.authCard h1{margin:4px 0 8px}
+.authCard label{display:block;margin-top:16px}
+.authCard label span,.accountCreate label span{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;margin-bottom:7px}
+.authCard input,.accountCreate input,.accountCreate select,.accountRow select{width:100%;min-height:46px;border:1px solid #cfcfcf;border-radius:10px;padding:0 12px;background:#fff;color:#171717;font:inherit}
+.authCard .primary{width:100%;margin-top:20px}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.userBadge{display:flex;align-items:center;gap:10px}
+.userBadge span{display:flex;flex-direction:column;align-items:flex-end;line-height:1.05}
+.userBadge span b{font-size:13px}
+.userBadge span small{font-size:9px;letter-spacing:.08em;opacity:.62;margin-top:4px}
+.userBadge button{border:1px solid #333;background:transparent;border-radius:9px;padding:8px 10px;font-size:10px;font-weight:800;cursor:pointer}
+.accountCreate{display:grid;grid-template-columns:1.1fr 1.1fr .8fr auto;gap:12px;align-items:end;margin:22px 0}
+.accountCreate .primary{min-height:46px;white-space:nowrap}
+.accountList{display:grid;gap:10px;margin-top:18px}
+.accountRow{display:grid;grid-template-columns:minmax(150px,1fr) 145px auto auto auto;gap:9px;align-items:center;border:1px solid #dadada;border-radius:13px;padding:12px;background:#fff}
+.accountRow.disabled{opacity:.55}
+.accountRow>div{display:flex;flex-direction:column}
+.accountRow>div small{font-size:10px;letter-spacing:.06em;margin-top:3px}
+.accountRow button{min-height:38px;border:1px solid #bcbcbc;background:#fff;border-radius:9px;padding:0 11px;font-weight:750;cursor:pointer}
+.accountRow .deleteButton.compact{min-width:auto;margin:0}
+@media(max-width:760px){
+  .userBadge span{display:none}
+  .accountCreate{grid-template-columns:1fr}
+  .accountRow{grid-template-columns:1fr 1fr}
+  .accountRow>div{grid-column:1/-1}
+  .accountRow .deleteButton.compact{grid-column:1/-1}
+}
