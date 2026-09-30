@@ -107,4 +107,5 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .capturePreviewGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
 .capturePreviewGrid .capturePreview{margin-top:0}
 .arrivalStatus,.arrivalSuccess{margin-top:14px;font-size:18px;font-weight:800;line-height:1.25}
+.arrivalStatus{color:#c62828}
 .arrivalSuccess{color:#138a36}
