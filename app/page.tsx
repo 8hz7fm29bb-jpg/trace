@@ -20,7 +20,7 @@ export default function Home(){
  const [rows,setRows]=useState<Arrival[]>([])
  const [q,setQ]=useState('')
  const [message,setMessage]=useState('')
- const [conforme,setConforme]=useState(false)
+ const [conforme,setConforme]=useState(true)
  const [authReady,setAuthReady]=useState(false)
  const [initialized,setInitialized]=useState(true)
  const [account,setAccount]=useState<TraceAccount|null>(null)
@@ -103,7 +103,7 @@ export default function Home(){
     const eup=await supabase.storage.from('trace-arrivals').upload(epath,extra,{contentType:extra.type||'image/jpeg'})
     if(!eup.error) await supabase.from('trace_arrival_photos').insert({arrival_id:data.id,photo_path:epath,photo_type:'product_label'})
   }
-  setForm(empty);setPhoto(null);setProductPhotos([]);setConforme(false);await loadSuppliers();setMessage(`Registrato: lotto ${data.internal_lot} · consegna ${new Date(data.delivery_date+'T12:00:00').toLocaleDateString('it-IT')}`);await load()
+  setForm(empty);setPhoto(null);setProductPhotos([]);setConforme(true);await loadSuppliers();setMessage(`Registrato: lotto ${data.internal_lot} · consegna ${new Date(data.delivery_date+'T12:00:00').toLocaleDateString('it-IT')}`);await load()
  }
  const today=new Date();const toggleProductionLot=(id:string)=>setProductionLots(x=>x.includes(id)?x.filter(v=>v!==id):[...x,id])
  if(!authReady)return <main className="authPage"><section className="authCard"><div className="brand authBrand">TRACE</div><p>Caricamento…</p></section></main>
