@@ -99,3 +99,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .accountRow>div{grid-column:1/-1}
   .accountRow .deleteButton.compact{grid-column:1/-1}
 }
+
+
+/* Arrival capture previews and status */
+.capturePreview{margin-top:12px;border:1px solid #d8d8d8;border-radius:12px;overflow:hidden;background:#f7f7f7}
+.capturePreview img{display:block;width:100%;max-height:220px;object-fit:cover}
+.capturePreviewGrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:12px}
+.capturePreviewGrid .capturePreview{margin-top:0}
+.arrivalStatus,.arrivalSuccess{margin-top:14px;font-size:18px;font-weight:800;line-height:1.25}
+.arrivalSuccess{color:#138a36}
