@@ -109,3 +109,12 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .arrivalStatus,.arrivalSuccess{margin-top:14px;font-size:18px;font-weight:800;line-height:1.25}
 .arrivalStatus{color:#c62828}
 .arrivalSuccess{color:#138a36;background:#fff;border:1px solid #d9d9d9;border-radius:14px;padding:16px 20px;text-align:center;max-width:560px;margin:18px auto 0;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+
+/* Produzioni: spaziatura e pulsanti approvati in anteprima */
+.presetsPage .productionActions{gap:12px}
+.presetsPage .productionActions + .search{margin-top:24px;margin-bottom:12px}
+.presetsPage .lot .productionActions{margin-top:20px}
+.presetsPage .lot{padding-top:24px;padding-bottom:24px}
+.presetsPage .editButton{min-height:46px;background:#f4c928;color:#201d0e;border-color:#dbb120}
+.presetsPage .lot .editButton:first-child{background:#fff4cb;color:#70540a;border-color:#e5cd7a}
+.presetsPage .editButton:disabled{opacity:.55;cursor:wait}
