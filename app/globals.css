@@ -116,5 +116,7 @@ header{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .presetsPage .lot .productionActions{margin-top:20px}
 .presetsPage .lot{padding-top:24px;padding-bottom:24px}
 .presetsPage .editButton{min-height:46px;background:#f4c928;color:#201d0e;border-color:#dbb120}
-.presetsPage .lot .editButton:first-child{background:#fff4cb;color:#70540a;border-color:#e5cd7a}
+.presetsPage .lot .editButton{min-height:54px;padding:15px 20px;background:#fff;color:#171717;border:1px solid #d7d5cf;border-radius:12px;font:inherit;font-weight:800}
+.presetsPage .lot .editButton:hover:not(:disabled){background:#fafafa;border-color:#aaa}
+.presetsPage .lot .editButton:focus-visible{outline:2px solid #171717;outline-offset:3px}
 .presetsPage .editButton:disabled{opacity:.55;cursor:wait}
