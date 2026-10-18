@@ -3,6 +3,7 @@ create table public.trace_production_presets (
  name text not null check (btrim(name) <> ''),
  conservation text not null check (conservation in ('AMBIENTE','FRIGO','GELO')),
  suppliers text[] not null check (cardinality(suppliers)>0),
+ supplier_lot_counts jsonb not null default '{}'::jsonb check (jsonb_typeof(supplier_lot_counts)='object'),
  created_at timestamptz not null default now()
 );
 create unique index trace_production_presets_name on public.trace_production_presets(lower(btrim(name)));
@@ -25,7 +26,7 @@ begin
  select * into strict preset from public.trace_production_presets where id=preset_id;
  arrival_ids := array[]::uuid[];
  foreach supplier_name in array preset.suppliers loop
-  select array_agg(a.id) into picked from (select id from public.trace_arrivals where lower(btrim(supplier))=lower(btrim(supplier_name)) and coalesce(delivery_date,created_at::date)<=day order by coalesce(delivery_date,created_at::date) desc,created_at desc,id desc limit 2)a;
+  select array_agg(a.id) into picked from (select id from public.trace_arrivals where lower(btrim(supplier))=lower(btrim(supplier_name)) and coalesce(delivery_date,created_at::date)<=day order by coalesce(delivery_date,created_at::date) desc,created_at desc,id desc limit greatest(1,least(100,coalesce((preset.supplier_lot_counts->>supplier_name)::integer,2))))a;
   if coalesce(cardinality(picked),0)=0 then raise exception 'Nessun lotto disponibile per il fornitore %',supplier_name; end if;
   arrival_ids := arrival_ids || picked;
  end loop;
